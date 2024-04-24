@@ -18,7 +18,8 @@ const Figure = styled.figure`
       box-sizing: border-box;
       padding: 12px;
       h3 {
-          font-family: 'GandhiSansBold';
+        font-size: 20px !important;
+        font-family: 'GandhiSansBold';
       }
       h4 {
           flex-grow: 1;
@@ -36,7 +37,7 @@ const Rodape = styled.footer`
     align-items: center;
   `
 
-const Imagem = ({ foto, expandida = false }) => {
+const Imagem = ({ foto, expandida = false, aoZoomSolicitado }) => {
   return (<Figure $expandida={expandida} id={`foto-${foto.id}`}>
     <img src={foto.imagem} alt={foto.titulo} />
     <figcaption>
@@ -46,7 +47,7 @@ const Imagem = ({ foto, expandida = false }) => {
         <BotaoIcone>
           <img src="/icones/favorito.png" alt="Icone de favorito" />
         </BotaoIcone>
-        {!expandida && <BotaoIcone aria-hidden={expandida}>
+        {!expandida && <BotaoIcone aria-hidden={expandida} onClick={() => aoZoomSolicitado(foto)}>
           <img src="/icones/expandir.png" alt="Icone de expandir" />
         </BotaoIcone>}
       </Rodape>
